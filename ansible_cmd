@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Ansible host:
+sudo apt install ansible sshpass
+sudo touch /var/log/ansible.log
+sudo groupadd ansible
+sudo chown root:ansible /var/log/ansible.log
+sudo chmod 775 /var/log/ansible.log
+sudo usermod vagrant -aG ansible
+ansible --version
+
+# Debian:
+sudo passwd vagrant
+
+# Ansible:
+ssh-keygen -t rsa -b 4096
+ssh-copy-id -i /home/vagrant/.ssh/id_rsa vagrant@192.168.15.102
+
