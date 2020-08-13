@@ -1,5 +1,0 @@
-----------------------------------------------
-                Sejam bem vindos!
-                
-IP="ansible_all_ipv4_addresses"
-Instituição: {{ nome_empresa }}

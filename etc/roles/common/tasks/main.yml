@@ -1,16 +1,33 @@
 ---
-- name: Instalação de pacotes
-  yum: name={{item}} state=lastest
-  with_item:
-    - "{{ common_packages }}"
+# Gerenciamento de pacotes e atualização do Sistema Operacional
+- name: Atualizacao do Sistema Operacional
+  yum: name=* state=latest update_cache=yes
+  
+- name: Instalacao de pacotes
+  yum:
+    name: "{{ packages }}"
+    state: latest
+  vars: 
+    packages:
+      - net-tools
+      - vim
+
+# Config de timezone
+- name: Configurando Timezone
+  file: src=/usr/share/zoneinfo/America/Maceio dest=/etc/localtime state=link force=yes
+
+#- name: Instalação de pacotes
+#  yum: name={{item}} state=lastest
+#  with_item:
+#    - "{{ common_packages }}"
     
-- name: Instalação de pacotes
-  yum: name={{item}} state=lastest
-  with_item:
-    - tcpdump
-    - vim
-    - gcc
+#- name: Instalação de pacotes
+#  yum: name={{item}} state=lastest
+#  with_item:
+#    - tcpdump
+#    - vim
+#    - gcc
     
-- name: Instalação de pacotes
-  yum: name={{ common_packages }} state=lastest
+#- name: Instalação de pacotes
+#  yum: name={{ common_packages }} state=lastest
 ...
