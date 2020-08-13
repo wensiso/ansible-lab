@@ -11,11 +11,22 @@
     packages:
       - net-tools
       - vim
+      - nmap
+      - git
+      - tree
 
 # Config de timezone
 - name: Configurando Timezone
   file: src=/usr/share/zoneinfo/America/Maceio dest=/etc/localtime state=link force=yes
 
+# Copia de arquivos
+- name: Copiando arquivos de backup
+  copy: src=backup.tar.xz dest=/tmp/backup.tar.xz
+
+# Template
+- name: Copiando um template
+  template: src=motd dest=/etc/motd force=yes owner=root group=root
+#
 #- name: Instalação de pacotes
 #  yum: name={{item}} state=lastest
 #  with_item:
