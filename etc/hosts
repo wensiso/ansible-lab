@@ -2,17 +2,8 @@
 www ansible_ssh_host=192.168.15.101
 
 [bd]
-mysql ansible_ssh_host=192.168.15.102 ansible_ssh_user=vagrant
+mysql ansible_ssh_host=192.168.15.102
 
 [servers:children]
 web
 bd
-
-[bd:vars]
-ansible_ssh_port=22
-ansible_ssh_user=vagrant
-ansible_become=yes
-ansible_become_method=sudo
-ansible_become_user=vagrant
-ansible_become_pass=vagrant
-ansible_connection=ssh
