@@ -1,4 +1,6 @@
 - name: Default Playbook - Starting Deploy
-  hosts: www
+  hosts: all
   roles:
-    - common
+    #- php # se eu nao utilizasses dependencias...
+    #- common
+    - updates

@@ -1,0 +1,6 @@
+---
+# Dependencias
+
+dependencies:
+  - { role: php }
+...

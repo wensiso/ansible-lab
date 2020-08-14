@@ -23,10 +23,19 @@
 - name: Copiando arquivos de backup
   copy: src=backup.tar.xz dest=/tmp/backup.tar.xz
 
-# Template
+# Utilizando templates
 - name: Copiando um template
   template: src=motd dest=/etc/motd force=yes owner=root group=root
-#
+
+# Instalação do nginx
+- name: Instalacao do nginx
+  yum: name=nginx state=latest
+  notify: Restart nginx
+
+
+
+
+
 #- name: Instalação de pacotes
 #  yum: name={{item}} state=lastest
 #  with_item:
