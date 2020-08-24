@@ -21,3 +21,20 @@ ansible-galaxy install geerlingguy.firewall -p roles/
 ansible-galaxy info geerlingguy.firewall -p roles/
 cd roles/
 ansible-galaxy init teste
+
+# Ansible-Vault
+# exemplos:
+ansible-vault create passwd.yml
+ansible-vault edit passwd.yml
+ansible-vault view passwd.yml
+ansible-vault decrypt passwd.yml
+ansible-vault encrypt passwd.yml
+
+#uso:
+cd roles/
+ansible-galaxy init create_user
+ansible-playbook -i hosts --ask-vault-pass playbook.yml --syntax-check
+ansible-playbook -i hosts --ask-vault-pass playbook.yml --check
+ansible-playbook -i hosts --ask-vault-pass playbook.yml -v
+
+
