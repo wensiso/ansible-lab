@@ -1,20 +1,23 @@
 ---
 - hosts: www
   tasks: 
-  - name: Instalacao do Nginx
+  - name: Remocao de pacotes
     yum:
-      name: nginx
+      name: "{{ packages }}"
+      state: absent
+    vars: 
+      packages:
+        - httpd
+        - nginx
+  - name: Instalacao de pacotes
+    yum:
+      name: "{{ packages }}"
       state: latest
-    notify: stop apache
-    notify: restart nginx
-  handlers:
-    - name: stop apache
-      systemd: 
-        name: httpd
-        state: stop
-    - name: restart nginx
-      systemd: 
-        name: nginx
-        state: restarted
+    vars:
+      packages:
+        - httpd
+        - nginx
+        - vim
+
 ...
 
