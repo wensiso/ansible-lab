@@ -16,3 +16,8 @@ sudo passwd vagrant
 ssh-keygen -t rsa -b 4096
 ssh-copy-id -i /home/vagrant/.ssh/id_rsa vagrant@192.168.15.102
 
+# Ansible-Galaxy (https://galaxy.ansible.com/)
+ansible-galaxy install geerlingguy.firewall -p roles/
+ansible-galaxy info geerlingguy.firewall -p roles/
+cd roles/
+ansible-galaxy init teste
